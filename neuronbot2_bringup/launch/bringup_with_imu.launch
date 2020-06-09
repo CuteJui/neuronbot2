@@ -13,8 +13,8 @@
 
 
     <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter_madgwick" output="screen" respawn="false" >
-        <param name="use_mag" value="false" />
-        <param name="publish_tf" value="false" />
+        <param name="use_mag" value="true" />
+        <param name="publish_tf" value="true" />
     </node>
 
     <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf" output="screen">

@@ -142,9 +142,9 @@ void BaseDriver::cmd_vel_callback(const geometry_msgs::Twist& vel_cmd)
 {
     // ROS_INFO_STREAM("cmd_vel:[" << vel_cmd.linear.x << " " << vel_cmd.linear.y << " " << vel_cmd.angular.z << "]");
 
-    Data_holder::get()->velocity.v_liner_x = vel_cmd.linear.x*100;
-    Data_holder::get()->velocity.v_liner_y = vel_cmd.linear.y*100;
-    Data_holder::get()->velocity.v_angular_z = vel_cmd.angular.z*100;
+    Data_holder::get()->velocity.v_liner_x = vel_cmd.linear.x*50;
+    Data_holder::get()->velocity.v_liner_y = vel_cmd.linear.y*50;
+    Data_holder::get()->velocity.v_angular_z = vel_cmd.angular.z*50;
 
     need_update_speed = true;
 }
@@ -284,6 +284,10 @@ void BaseDriver::update_imu()
     raw_imu_msgs.raw_magnetic_field.x = Data_holder::get()->imu_data[6];
     raw_imu_msgs.raw_magnetic_field.y = Data_holder::get()->imu_data[7];
     raw_imu_msgs.raw_magnetic_field.z = Data_holder::get()->imu_data[8];
+    fprintf(stderr, "CT: mag(x,y,z)=(%lf,%lf,%lf)\n",
+		    raw_imu_msgs.raw_magnetic_field.x,
+		    raw_imu_msgs.raw_magnetic_field.y,
+		    raw_imu_msgs.raw_magnetic_field.z);
 
     // ROS_INFO("%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f ", raw_imu_msgs.raw_linear_acceleration.x, raw_imu_msgs.raw_linear_acceleration.y, raw_imu_msgs.raw_linear_acceleration.z,
     // raw_imu_msgs.raw_angular_velocity.x, raw_imu_msgs.raw_angular_velocity.y ,raw_imu_msgs.raw_angular_velocity.z,
